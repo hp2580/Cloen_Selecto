@@ -1,0 +1,128 @@
+@import "reset.css";
+body {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+}
+
+section {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+}
+section.brand {
+  background-image: url(../images/sub/intro-left-bg.png);
+}
+section.found {
+  background-image: url(../images/sub/intro-right-bg.png);
+  background-size: 440px 580px;
+}
+section .desc {
+  width: 350px;
+  height: 350px;
+  color: #ff4713;
+  background: #fff;
+  padding: 40px;
+  position: relative;
+  transition: 0.3s;
+}
+section .desc h4 {
+  font-size: 1.3em;
+  font-weight: 400;
+  padding-bottom: 30px;
+  position: relative;
+}
+section .desc h4:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #ff4713;
+}
+section .desc div {
+  margin-top: 30px;
+  font-size: 1.75em;
+}
+section .desc:after {
+  content: "";
+  position: absolute;
+  bottom: 40px;
+  width: 12%;
+  min-width: 40px;
+  height: 30px;
+  background: url(../images/sub/intro-half_arrow.png) no-repeat center/contain;
+}
+section .desc:hover {
+  transform: translateY(-10px);
+}
+section img {
+  position: absolute;
+  width: 184px;
+  height: 184px;
+  top: 75%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+section img.arrow {
+  width: 80px;
+  height: auto;
+}
+@-webkit-keyframes rotate {
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+@keyframes rotate {
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@media screen and (max-width: 950px) {
+  body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px 0;
+  }
+  section {
+    width: 100%;
+  }
+  section .desc {
+    height: 340px;
+  }
+  section img {
+    display: none;
+  }
+}
+@media screen and (max-width: 550px) {
+  section.found {
+    background-size: cover;
+  }
+}
+@media screen and (max-width: 550px) {
+  section .desc {
+    width: 280px;
+    height: 280px;
+  }
+  section .desc h4 {
+    padding-bottom: 10px;
+  }
+  section .desc h4:after {
+    height: 1px;
+  }
+  section .desc div {
+    margin-top: 20px;
+    font-size: 1.25em;
+  }
+}/*# sourceMappingURL=sub.css.map */
