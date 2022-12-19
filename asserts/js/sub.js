@@ -9,6 +9,12 @@ window.onresize = () => {
   checkRotate();
 };
 
+document.body.addEventListener("mousemove", function (e) {
+  let cursor = document.querySelector(".cursor");
+  cursor.style.top = `${e.pageY}px`;
+  cursor.style.left = `${e.pageX}px`;
+});
+
 for (let box of boxes) {
   box.addEventListener("mouseenter", function () {
     if (rotatable == true) {
