@@ -2,7 +2,11 @@ let menus = document.querySelectorAll(".h_menu a");
 let depth2 = document.querySelector(".depth2");
 let header = document.querySelector("header");
 let side_menus = document.querySelectorAll(".menu a");
+let slide_wrap = document.querySelector(".slide_wrap");
 let prevY;
+let prevPoint,
+  prevX,
+  nextX = 0;
 
 window.onload = () => {
   setTimeout(() => {
@@ -58,3 +62,19 @@ header.addEventListener("mouseleave", () => {
   depth2.classList.remove("show");
   document.querySelector(".found").classList.remove("convert");
 });
+
+for (let slide of document.querySelectorAll(".slide_wrap a")) {
+  slide.addEventListener("click", (e) => {
+    e.preventDefault();
+  });
+}
+
+slide_wrap.addEventListener("mousedown", function (e) {
+  prevX = e.pageX;
+});
+
+slide_wrap.addEventListener("mouseup", () => {
+  move_slide();
+});
+
+function move_slide() {}
