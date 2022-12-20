@@ -42,6 +42,11 @@ window.onscroll = () => {
       depth2.classList.remove("show");
       document.querySelector(".found").classList.remove("convert");
     }
+    let box_middle =
+      document.querySelector(".box").offsetTop -
+      document.querySelector(".box").offsetHeight;
+    if (box_middle < window.scrollY)
+      document.querySelector(".sec4_num").innerHTML = `284,438`;
   } else header.classList.add("show");
   prevY = currentY;
 };
