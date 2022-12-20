@@ -519,6 +519,35 @@ header .depth2 .nav_wrap .wrap ul li a {
   letter-spacing: -1px;
 }
 
+.sec3 .top {
+  padding: 100px 0;
+  text-align: center;
+}
+.sec3 .bg img {
+  width: 100%;
+}
+.sec3 .text_wrap {
+  border-bottom: 1px solid #ff4713;
+  padding: 30px 0;
+}
+.sec3 .text_wrap .text {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 0 20px;
+}
+.sec3 .text_wrap .text span {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0 10px;
+  color: #ff4713;
+  font-size: 2em;
+}
+
 @media screen and (max-width: 1200px) {
   .sec2 {
     display: flex;
