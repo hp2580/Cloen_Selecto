@@ -252,9 +252,10 @@ header {
 
 .sec1 {
   overflow: hidden;
+  position: relative;
   .slide_wrap {
     @include flex;
-    width: 300%;
+    width: 500%;
     height: calc(100vh - 100px);
     li {
       flex: 1;
@@ -271,6 +272,41 @@ header {
         }
       }
     }
+  }
+  .deco_scroll {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    color: #fff;
+    transform: translateX(-50%);
+    .mouse {
+      width: 25px;
+      height: 40px;
+      border-radius: 20px;
+      border: 2px solid #fff;
+      margin: 0 auto 10px;
+      position: relative;
+      &:after {
+        content: "";
+        position: absolute;
+        top: 3px;
+        left: 50%;
+        width: 2px;
+        height: 8px;
+        background: #fff;
+        transform: translateX(-50%);
+      }
+    }
+  }
+  &:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 2px;
+    height: 30px;
+    background: #fff;
+    transform: translateX(-50%);
   }
 }
 

@@ -272,13 +272,14 @@ header .depth2 .nav_wrap .wrap ul li a {
 
 .sec1 {
   overflow: hidden;
+  position: relative;
 }
 .sec1 .slide_wrap {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  width: 300%;
+  width: 500%;
   height: calc(100vh - 100px);
 }
 .sec1 .slide_wrap li {
@@ -295,6 +296,41 @@ header .depth2 .nav_wrap .wrap ul li a {
 }
 .sec1 .slide_wrap li a img:nth-child(2) {
   display: none;
+}
+.sec1 .deco_scroll {
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  color: #fff;
+  transform: translateX(-50%);
+}
+.sec1 .deco_scroll .mouse {
+  width: 25px;
+  height: 40px;
+  border-radius: 20px;
+  border: 2px solid #fff;
+  margin: 0 auto 10px;
+  position: relative;
+}
+.sec1 .deco_scroll .mouse:after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 50%;
+  width: 2px;
+  height: 8px;
+  background: #fff;
+  transform: translateX(-50%);
+}
+.sec1:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  height: 30px;
+  background: #fff;
+  transform: translateX(-50%);
 }
 
 @media screen and (max-width: 1024px) {
