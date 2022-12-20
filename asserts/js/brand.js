@@ -160,3 +160,24 @@ function autoPlay() {
   slide_wrap.style.transition = `.2s ease`;
   slide_wrap.style.transform = `translateX(-${prevPoint}px)`;
 }
+
+let buttons = document.querySelectorAll(".btn_wrap button");
+for (let button of buttons) {
+  button.addEventListener("click", function () {
+    let index = this.classList[0].split("")[3];
+    clearActive(document.querySelectorAll(".sec2_menu"));
+    clearActive(document.querySelectorAll(".about"));
+    clearActive(document.querySelectorAll(".deco"));
+    clearActive(buttons);
+    document.querySelector(`.sec2_menu${index}`).classList.add("active");
+    document.querySelector(`.about${index}`).classList.add("active");
+    document.querySelector(`.deco${index}`).classList.add("active");
+    this.classList.add("active");
+  });
+}
+
+function clearActive(elements) {
+  for (let element of elements) {
+    element.classList.remove("active");
+  }
+}

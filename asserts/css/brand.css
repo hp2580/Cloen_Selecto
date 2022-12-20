@@ -118,6 +118,7 @@ header {
   background: #fff;
   transform: translateY(-100px);
   transition: 0.3s;
+  z-index: 30;
 }
 header.show {
   transform: translateY(0);
@@ -333,6 +334,246 @@ header .depth2 .nav_wrap .wrap ul li a {
   transform: translateX(-50%);
 }
 
+.sec2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  position: relative;
+}
+.sec2 > div {
+  flex: 1;
+  height: 100vh;
+  overflow: hidden;
+}
+.sec2 .deco_wrap {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -40%);
+  z-index: 2;
+}
+.sec2 .deco_wrap .deco {
+  display: none;
+  width: 340px;
+}
+.sec2 .deco_wrap .deco.active {
+  display: block;
+}
+.sec2 .deco_wrap .deco img {
+  width: 100%;
+}
+.sec2 .left {
+  position: relative;
+}
+.sec2 .left .content {
+  width: 100%;
+  height: 100%;
+  padding: 50px;
+  color: #fff;
+  text-transform: uppercase;
+  position: relative;
+  z-index: 1;
+}
+.sec2 .left .content h1 {
+  font-size: 3em;
+}
+.sec2 .left .content .btn_wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+.sec2 .left .content .btn_wrap button {
+  font-size: 1.3em;
+  letter-spacing: -1px;
+  margin-top: 30px;
+  color: #fff;
+  cursor: pointer;
+  text-transform: uppercase;
+  position: relative;
+}
+.sec2 .left .content .btn_wrap button:after {
+  display: none;
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: #fff;
+}
+.sec2 .left .content .btn_wrap button.active:after {
+  display: block;
+}
+.sec2 .left .sec2_menu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+.sec2 .left .sec2_menu.active {
+  transform: translateX(100%);
+  z-index: 0;
+  -webkit-animation: slideIn 0.6s ease-in forwards;
+          animation: slideIn 0.6s ease-in forwards;
+}
+.sec2 .left .sec2_menu.active img {
+  transform: scale(1.1);
+}
+@-webkit-keyframes slideIn {
+  to {
+    transform: translateX(0);
+  }
+}
+@keyframes slideIn {
+  to {
+    transform: translateX(0);
+  }
+}
+.sec2 .left .sec2_menu img {
+  width: 100%;
+  height: 85%;
+  transition: 0.2s 0.6s ease;
+}
+.sec2 .right {
+  position: relative;
+}
+.sec2 .right > div {
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 50px 50px 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  color: #ff4713;
+  text-transform: uppercase;
+  z-index: 0;
+  pointer-events: none;
+}
+.sec2 .right > div.active {
+  opacity: 1;
+  z-index: 1;
+  pointer-events: all;
+}
+.sec2 .right > div h2 {
+  font-size: 2.25em;
+  margin-bottom: 30px;
+}
+.sec2 .right > div p {
+  font-size: 1.1em;
+  font-weight: 600;
+}
+.sec2 .right > div > ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  margin: 0 0 0 auto;
+  padding: 100px 0;
+}
+.sec2 .right > div > ul li {
+  flex: 1;
+}
+.sec2 .right > div > ul li a {
+  display: block;
+}
+.sec2 .right > div > ul li a img {
+  width: 100%;
+}
+.sec2 .right > div .recommand h3 {
+  position: relative;
+  padding-bottom: 10px;
+}
+.sec2 .right > div .recommand h3:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: #ff4713;
+}
+.sec2 .right > div .recommand ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0 20px;
+}
+.sec2 .right > div .recommand ul li .img_wrap {
+  width: 70px;
+  height: 70px;
+  margin: 20px auto;
+}
+.sec2 .right > div .recommand ul li .img_wrap img {
+  width: 100%;
+}
+.sec2 .right > div .recommand ul li .text_wrap {
+  font-size: 0.8em;
+  letter-spacing: -1px;
+}
+
+@media screen and (max-width: 1200px) {
+  .sec2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .sec2 > div {
+    flex: auto;
+    width: 100%;
+  }
+  .sec2 .deco_wrap {
+    display: none;
+  }
+  .sec2 .left {
+    position: relative;
+  }
+  .sec2 .left .content h1 {
+    font-size: 4em;
+    text-align: center;
+  }
+  .sec2 .left .content .btn_wrap {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 0 30px;
+  }
+  .sec2 .right > div {
+    padding: 0 50px;
+  }
+  .sec2 .right > div h2 {
+    margin-bottom: 20px;
+    letter-spacing: -2px;
+  }
+  .sec2 .right > div p {
+    font-size: 1em;
+    font-weight: 400;
+    letter-spacing: -1px;
+  }
+  .sec2 .right > div > ul {
+    width: 100%;
+    margin: auto;
+    padding: 50px 0;
+  }
+  .sec2 .right > div .recommand ul {
+    gap: 0 20px;
+    flex-wrap: wrap;
+  }
+  .sec2 .right > div .recommand ul li .img_wrap {
+    width: 55px;
+    height: 55px;
+    margin: 20px auto 10px;
+  }
+}
 @media screen and (max-width: 1024px) {
   header .container .h_menu {
     display: none;
@@ -377,5 +618,24 @@ header .depth2 .nav_wrap .wrap ul li a {
   }
   .sec1:after {
     display: none;
+  }
+  .sec2 > div {
+    height: 80vh;
+  }
+  .sec2 .left .content {
+    padding: 30px 20px 0;
+  }
+  .sec2 .left .content h1 {
+    font-size: 2em;
+  }
+  .sec2 .left .content .btn_wrap {
+    gap: 0 15px;
+    flex-wrap: wrap;
+  }
+  .sec2 .left .content .btn_wrap button {
+    font-size: 1.15em;
+  }
+  .sec2 .right > div {
+    padding: 0 20px;
   }
 }/*# sourceMappingURL=brand.css.map */
