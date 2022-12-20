@@ -13,7 +13,7 @@ body {
 .side_menu {
   position: fixed;
   top: 0;
-  right: -100%;
+  right: -320px;
   width: 320px;
   height: 100vh;
   color: #ff4713;
@@ -344,6 +344,38 @@ header .depth2 .nav_wrap .wrap ul li a {
     display: block;
   }
   header .depth2 {
+    display: none;
+  }
+}
+@media screen and (max-width: 900px) {
+  .cursor {
+    display: none;
+  }
+}
+@media screen and (max-width: 500px) {
+  header .container {
+    height: 55px;
+  }
+  header .container .h_logo {
+    width: 80px;
+  }
+  header .container .btn_side {
+    width: 30px;
+    height: 25px;
+  }
+  .sec1 .slide_wrap {
+    height: calc(100vh - 55px);
+  }
+  .sec1 .slide_wrap li a img:nth-child(1) {
+    display: none;
+  }
+  .sec1 .slide_wrap li a img:nth-child(2) {
+    display: block;
+  }
+  .sec1 .deco_scroll {
+    display: none;
+  }
+  .sec1:after {
     display: none;
   }
 }/*# sourceMappingURL=brand.css.map */
