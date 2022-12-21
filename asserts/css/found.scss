@@ -1,0 +1,295 @@
+@import "reset.css";
+@import "mixins.scss";
+
+$brand-color: #ff4713;
+
+body {
+  overflow-x: hidden;
+  position: relative;
+  word-break: keep-all;
+}
+
+.cursor {
+  position: absolute;
+  pointer-events: none;
+  z-index: 100;
+}
+
+.side_menu {
+  position: fixed;
+  top: 0;
+  right: -320px;
+  width: 320px;
+  height: 100vh;
+  color: $brand-color;
+  background: #fff;
+  z-index: 40;
+  overflow: auto;
+  transition: 0.3s;
+  &.active {
+    right: 0;
+  }
+  .menu {
+    @include flex($direction: column, $justify: flex-start, $align: flex-start);
+    gap: 20px 0;
+    float: right;
+    width: 100%;
+    height: auto;
+    padding: 20px 40px;
+    .btn_close {
+      align-self: flex-end;
+      width: 30px;
+      height: 30px;
+      margin-bottom: 30px;
+      transform: translateX(20px);
+      background: url(../images/brand/X@2x.png) no-repeat center / cover;
+      cursor: pointer;
+    }
+    dl {
+      width: 100%;
+      height: 30px;
+      font-weight: 600;
+      overflow: hidden;
+      &.active {
+        height: auto;
+      }
+      dt {
+        font-size: 1.425em;
+        letter-spacing: -1px;
+        margin-bottom: 20px;
+        position: relative;
+        &:after {
+          content: "";
+          position: absolute;
+          top: 50%;
+          right: 0;
+          width: 20px;
+          height: 20px;
+          background: url(../images/brand/arrow-down.png) no-repeat center /
+            cover;
+          transform: translateY(-50%);
+        }
+      }
+      &.active dt {
+        &:after {
+          transform: translateY(-50%) rotateX(180deg);
+        }
+      }
+      dd {
+        padding: 10px 0 10px 10px;
+        font-size: 0.85em;
+      }
+      a {
+        display: block;
+      }
+    }
+    .sns {
+      @include flex;
+      gap: 0 20px;
+      margin-top: 30px;
+      a {
+        display: block;
+        width: 30px;
+        height: 30px;
+        @for $i from 1 through 3 {
+          &:nth-child(#{$i}) {
+            background: url(../images/brand/h-link#{$i}.svg)
+              no-repeat
+              center /
+              cover;
+          }
+        }
+      }
+    }
+    .found {
+      padding: 10px 30px;
+      color: #fff;
+      background: $brand-color;
+      border-radius: 20px;
+      margin-top: 30px;
+    }
+  }
+}
+
+header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  background: #fff;
+  transform: translateY(-100px);
+  transition: 0.3s;
+  z-index: 30;
+  &.show {
+    transform: translateY(0);
+  }
+  .container {
+    @include flex($justify: space-between);
+    padding: 0 40px;
+    height: 100px;
+    position: relative;
+    .h_logo {
+      display: block;
+      width: 160px;
+      img {
+        width: 100%;
+      }
+    }
+    .h_menu {
+      @include flex;
+      color: $brand-color;
+      font-size: 1.125em;
+      font-weight: 600;
+      text-align: center;
+      letter-spacing: -1px;
+      width: 50%;
+      height: 100px;
+      background: #fff;
+      position: absolute;
+      top: 50%;
+      left: 47%;
+      transform: translate(-50%, -50%);
+      li {
+        flex: 1;
+        height: 100%;
+        padding: 30px 0;
+        a {
+          display: block;
+          padding: 10px 0;
+        }
+      }
+    }
+    .h_link {
+      @include flex;
+      gap: 0 10px;
+      .h_found {
+        color: #fff;
+        background: $brand-color;
+        letter-spacing: -1px;
+        padding: 10px 20px;
+        border-radius: 20px;
+        border: 1px solid transparent;
+        transition: 0.3s;
+        &.convert {
+          background: #fff;
+          color: $brand-color;
+          border: 1px solid $brand-color;
+        }
+      }
+      .sns {
+        @include flex;
+        gap: 0 10px;
+        a {
+          display: block;
+          width: 30px;
+          height: 30px;
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+        }
+        @for $i from 1 through 3 {
+          li:nth-child(#{$i}) a {
+            background-image: url(../images/brand/h-link#{$i}.svg);
+          }
+        }
+      }
+    }
+    .btn_side {
+      display: none;
+      width: 40px;
+      height: 30px;
+      position: relative;
+      border-top: 4px solid $brand-color;
+      border-bottom: 4px solid $brand-color;
+      cursor: pointer;
+      &:after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        transform: translateY(-50%);
+        background: $brand-color;
+      }
+    }
+  }
+  .depth2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 340px;
+    text-align: center;
+    background: #fff;
+    z-index: -1;
+    transform: translateY(-400px);
+    transition: 0.4s linear;
+    &.show {
+      transform: translateY(0);
+    }
+    .nav_wrap {
+      position: relative;
+      height: 100%;
+      .wrap {
+        @include flex($align: flex-start);
+        position: absolute;
+        bottom: 0;
+        left: 47%;
+        width: 50%;
+        height: auto;
+        transform: translate(-50%, 0);
+        ul {
+          flex: 1;
+          font-weight: 600;
+          color: $brand-color;
+          li {
+            padding: 20px 0;
+            a {
+              display: block;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  header {
+    .container {
+      .h_menu {
+        display: none;
+      }
+      .h_link {
+        display: none;
+      }
+      .btn_side {
+        display: block;
+      }
+    }
+    .depth2 {
+      display: none;
+    }
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .cursor {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  header {
+    .container {
+      height: 55px;
+      .h_logo {
+        width: 80px;
+      }
+      .btn_side {
+        width: 30px;
+        height: 25px;
+      }
+    }
+  }
+}

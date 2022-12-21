@@ -1,0 +1,307 @@
+@import "reset.css";
+body {
+  overflow-x: hidden;
+  position: relative;
+  word-break: keep-all;
+}
+
+.cursor {
+  position: absolute;
+  pointer-events: none;
+  z-index: 100;
+}
+
+.side_menu {
+  position: fixed;
+  top: 0;
+  right: -320px;
+  width: 320px;
+  height: 100vh;
+  color: #ff4713;
+  background: #fff;
+  z-index: 40;
+  overflow: auto;
+  transition: 0.3s;
+}
+.side_menu.active {
+  right: 0;
+}
+.side_menu .menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 20px 0;
+  float: right;
+  width: 100%;
+  height: auto;
+  padding: 20px 40px;
+}
+.side_menu .menu .btn_close {
+  align-self: flex-end;
+  width: 30px;
+  height: 30px;
+  margin-bottom: 30px;
+  transform: translateX(20px);
+  background: url(../images/brand/X@2x.png) no-repeat center/cover;
+  cursor: pointer;
+}
+.side_menu .menu dl {
+  width: 100%;
+  height: 30px;
+  font-weight: 600;
+  overflow: hidden;
+}
+.side_menu .menu dl.active {
+  height: auto;
+}
+.side_menu .menu dl dt {
+  font-size: 1.425em;
+  letter-spacing: -1px;
+  margin-bottom: 20px;
+  position: relative;
+}
+.side_menu .menu dl dt:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  background: url(../images/brand/arrow-down.png) no-repeat center/cover;
+  transform: translateY(-50%);
+}
+.side_menu .menu dl.active dt:after {
+  transform: translateY(-50%) rotateX(180deg);
+}
+.side_menu .menu dl dd {
+  padding: 10px 0 10px 10px;
+  font-size: 0.85em;
+}
+.side_menu .menu dl a {
+  display: block;
+}
+.side_menu .menu .sns {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0 20px;
+  margin-top: 30px;
+}
+.side_menu .menu .sns a {
+  display: block;
+  width: 30px;
+  height: 30px;
+}
+.side_menu .menu .sns a:nth-child(1) {
+  background: url(../images/brand/h-link1.svg) no-repeat center/cover;
+}
+.side_menu .menu .sns a:nth-child(2) {
+  background: url(../images/brand/h-link2.svg) no-repeat center/cover;
+}
+.side_menu .menu .sns a:nth-child(3) {
+  background: url(../images/brand/h-link3.svg) no-repeat center/cover;
+}
+.side_menu .menu .found {
+  padding: 10px 30px;
+  color: #fff;
+  background: #ff4713;
+  border-radius: 20px;
+  margin-top: 30px;
+}
+
+header {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  left: 0;
+  background: #fff;
+  transform: translateY(-100px);
+  transition: 0.3s;
+  z-index: 30;
+}
+header.show {
+  transform: translateY(0);
+}
+header .container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+  height: 100px;
+  position: relative;
+}
+header .container .h_logo {
+  display: block;
+  width: 160px;
+}
+header .container .h_logo img {
+  width: 100%;
+}
+header .container .h_menu {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  color: #ff4713;
+  font-size: 1.125em;
+  font-weight: 600;
+  text-align: center;
+  letter-spacing: -1px;
+  width: 50%;
+  height: 100px;
+  background: #fff;
+  position: absolute;
+  top: 50%;
+  left: 47%;
+  transform: translate(-50%, -50%);
+}
+header .container .h_menu li {
+  flex: 1;
+  height: 100%;
+  padding: 30px 0;
+}
+header .container .h_menu li a {
+  display: block;
+  padding: 10px 0;
+}
+header .container .h_link {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0 10px;
+}
+header .container .h_link .h_found {
+  color: #fff;
+  background: #ff4713;
+  letter-spacing: -1px;
+  padding: 10px 20px;
+  border-radius: 20px;
+  border: 1px solid transparent;
+  transition: 0.3s;
+}
+header .container .h_link .h_found.convert {
+  background: #fff;
+  color: #ff4713;
+  border: 1px solid #ff4713;
+}
+header .container .h_link .sns {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0 10px;
+}
+header .container .h_link .sns a {
+  display: block;
+  width: 30px;
+  height: 30px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+header .container .h_link .sns li:nth-child(1) a {
+  background-image: url(../images/brand/h-link1.svg);
+}
+header .container .h_link .sns li:nth-child(2) a {
+  background-image: url(../images/brand/h-link2.svg);
+}
+header .container .h_link .sns li:nth-child(3) a {
+  background-image: url(../images/brand/h-link3.svg);
+}
+header .container .btn_side {
+  display: none;
+  width: 40px;
+  height: 30px;
+  position: relative;
+  border-top: 4px solid #ff4713;
+  border-bottom: 4px solid #ff4713;
+  cursor: pointer;
+}
+header .container .btn_side:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  transform: translateY(-50%);
+  background: #ff4713;
+}
+header .depth2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 340px;
+  text-align: center;
+  background: #fff;
+  z-index: -1;
+  transform: translateY(-400px);
+  transition: 0.4s linear;
+}
+header .depth2.show {
+  transform: translateY(0);
+}
+header .depth2 .nav_wrap {
+  position: relative;
+  height: 100%;
+}
+header .depth2 .nav_wrap .wrap {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  position: absolute;
+  bottom: 0;
+  left: 47%;
+  width: 50%;
+  height: auto;
+  transform: translate(-50%, 0);
+}
+header .depth2 .nav_wrap .wrap ul {
+  flex: 1;
+  font-weight: 600;
+  color: #ff4713;
+}
+header .depth2 .nav_wrap .wrap ul li {
+  padding: 20px 0;
+}
+header .depth2 .nav_wrap .wrap ul li a {
+  display: block;
+}
+
+@media screen and (max-width: 1024px) {
+  header .container .h_menu {
+    display: none;
+  }
+  header .container .h_link {
+    display: none;
+  }
+  header .container .btn_side {
+    display: block;
+  }
+  header .depth2 {
+    display: none;
+  }
+}
+@media screen and (max-width: 900px) {
+  .cursor {
+    display: none;
+  }
+}
+@media screen and (max-width: 500px) {
+  header .container {
+    height: 55px;
+  }
+  header .container .h_logo {
+    width: 80px;
+  }
+  header .container .btn_side {
+    width: 30px;
+    height: 25px;
+  }
+}/*# sourceMappingURL=found.css.map */
