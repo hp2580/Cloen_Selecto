@@ -173,7 +173,7 @@ header .container .h_link {
   align-items: center;
   gap: 0 10px;
 }
-header .container .h_link .found {
+header .container .h_link .h_found {
   color: #fff;
   background: #ff4713;
   letter-spacing: -1px;
@@ -182,7 +182,7 @@ header .container .h_link .found {
   border: 1px solid transparent;
   transition: 0.3s;
 }
-header .container .h_link .found.convert {
+header .container .h_link .h_found.convert {
   background: #fff;
   color: #ff4713;
   border: 1px solid #ff4713;
@@ -526,6 +526,36 @@ header .depth2 .nav_wrap .wrap ul li a {
 }
 .sec3 .bg img {
   width: 100%;
+}
+.sec3 .text_slide_wrap {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  color: #ff4713;
+  font-size: 3em;
+  padding: 30px 0;
+  border-bottom: 1px solid #ff4713;
+}
+.sec3 .text_slide_wrap .text_slide {
+  overflow: hidden;
+  white-space: nowrap;
+  min-width: -webkit-fit-content;
+  min-width: -moz-fit-content;
+  min-width: fit-content;
+  margin-right: 10px;
+  -webkit-animation: slide_text 20s infinite linear;
+          animation: slide_text 20s infinite linear;
+}
+@-webkit-keyframes slide_text {
+  to {
+    transform: translateX(-2000px);
+  }
+}
+@keyframes slide_text {
+  to {
+    transform: translateX(-2000px);
+  }
 }
 
 .sec4 {

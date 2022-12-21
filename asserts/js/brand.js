@@ -3,11 +3,12 @@ let depth2 = document.querySelector(".depth2");
 let header = document.querySelector("header");
 let side_menus = document.querySelectorAll(".menu a");
 let slide_wrap = document.querySelector(".slide_wrap");
+let text_wrap = document.querySelector(".text_slide_wrap");
 let prevY;
 let prevPoint = 0;
 let prevX = 0;
 let cnt = 0;
-let width, direction, index, interval;
+let width, direction, index, interval, interval2;
 let trigger = false;
 
 window.onload = () => {
@@ -40,6 +41,7 @@ window.onscroll = () => {
     else {
       header.classList.remove("show");
       depth2.classList.remove("show");
+      document.querySelector(".h_found").classList.remove("convert");
       document.querySelector(".found").classList.remove("convert");
     }
     let box_middle =
@@ -81,13 +83,13 @@ document.body.addEventListener("mousemove", function (e) {
 for (let menu of menus) {
   menu.addEventListener("mouseenter", () => {
     depth2.classList.add("show");
-    document.querySelector(".found").classList.add("convert");
+    document.querySelector(".h_found").classList.add("convert");
   });
 }
 
 header.addEventListener("mouseleave", () => {
   depth2.classList.remove("show");
-  document.querySelector(".found").classList.remove("convert");
+  document.querySelector(".h_found").classList.remove("convert");
 });
 
 slide_wrap.addEventListener("mousedown", (e) => {
@@ -108,6 +110,7 @@ slide_wrap.addEventListener("mouseup", (e) => {
   nextX = e.pageX;
   move_slide(nextX);
   trigger = false;
+  isEnd = false;
 });
 
 slide_wrap.addEventListener("touchstart", ({ changedTouches }) => {

@@ -160,7 +160,7 @@ header {
     .h_link {
       @include flex;
       gap: 0 10px;
-      .found {
+      .h_found {
         color: #fff;
         background: $brand-color;
         letter-spacing: -1px;
@@ -491,6 +491,25 @@ header {
   .bg {
     img {
       width: 100%;
+    }
+  }
+  .text_slide_wrap {
+    @include flex($justify: flex-start);
+    color: $brand-color;
+    font-size: 3em;
+    padding: 30px 0;
+    border-bottom: 1px solid $brand-color;
+    .text_slide {
+      overflow: hidden;
+      white-space: nowrap;
+      min-width: fit-content;
+      margin-right: 10px;
+      animation: slide_text 20s infinite linear;
+    }
+    @keyframes slide_text {
+      to {
+        transform: translateX(-2000px);
+      }
     }
   }
 }
