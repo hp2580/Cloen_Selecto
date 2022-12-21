@@ -677,9 +677,10 @@ header {
 footer {
   @include flex($direction: column);
   gap: 50px 0;
-  padding: 50px 100px;
+  padding: 50px;
   background: $brand-color;
   color: #fff;
+  position: relative;
   .f_link {
     @include flex;
     gap: 0 80px;
@@ -691,6 +692,92 @@ footer {
   .personal {
     font-size: 1.2em;
     font-weight: 600;
+  }
+  .address {
+    @include flex($direction: column);
+    p {
+      line-height: 2;
+      text-align: center;
+    }
+    .address1 {
+      @include flex;
+      flex-wrap: wrap;
+      gap: 0 20px;
+      p {
+        &:nth-child(1) {
+          position: relative;
+          &:after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            right: -10px;
+            width: 1px;
+            height: 15px;
+            transform: translateY(-50%);
+            background: rgba(#fff, 0.5);
+          }
+        }
+      }
+    }
+    .wrap {
+      @include flex;
+      gap: 0 20px;
+      .address2,
+      .address3 {
+        @include flex;
+        gap: 0 20px;
+        p {
+          position: relative;
+          &:nth-child(1):after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            right: -10px;
+            width: 1px;
+            height: 15px;
+            transform: translateY(-50%);
+            background: rgba(#fff, 0.5);
+          }
+        }
+      }
+      .address2 {
+        position: relative;
+        &:after {
+          content: "";
+          position: absolute;
+          top: 50%;
+          right: -10px;
+          width: 1px;
+          height: 15px;
+          transform: translateY(-50%);
+          background: rgba(#fff, 0.5);
+        }
+      }
+    }
+  }
+  .go_top {
+    position: absolute;
+    top: 50px;
+    right: 100px;
+    width: 80px;
+    height: 100px;
+    cursor: pointer;
+    .img_wrap {
+      @include flex;
+      width: 60px;
+      height: 60px;
+      margin: 0 auto 5px;
+      border-radius: 50%;
+      border: 1px solid #fff;
+      img {
+        width: 45px;
+      }
+    }
+    span {
+      color: #fff;
+      font-size: 1.3em;
+      letter-spacing: -1px;
+    }
   }
 }
 
@@ -747,6 +834,20 @@ footer {
                 height: 55px;
                 margin: 20px auto 10px;
               }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  footer {
+    .address {
+      .address1 {
+        p {
+          &:nth-child(1) {
+            &:after {
+              width: 0;
             }
           }
         }
@@ -832,6 +933,36 @@ footer {
     }
     .rotate_wrap {
       display: none;
+    }
+  }
+
+  footer {
+    .address {
+      p {
+        font-size: 0.9em;
+      }
+      .wrap {
+        @include flex($direction: column);
+        .address2,
+        .address3 {
+          gap: 0 40px;
+          p {
+            &:nth-child(1):after {
+              right: -20px;
+            }
+          }
+        }
+        .address2 {
+          &:after {
+            width: 0;
+          }
+        }
+      }
+    }
+    .go_top {
+      position: absolute;
+      top: 50px;
+      right: 50px;
     }
   }
 }
@@ -982,6 +1113,25 @@ footer {
       gap: 0 10px;
       width: 80%;
       padding: 30px 0 60px;
+    }
+  }
+
+  footer {
+    gap: 30px 0;
+    .f_link {
+      gap: 0 40px;
+    }
+    .address {
+      p {
+        font-size: 0.8em;
+      }
+    }
+    .copyright {
+      text-align: center;
+      font-size: 0.9em;
+    }
+    .go_top {
+      right: 5px;
     }
   }
 }

@@ -724,9 +724,10 @@ footer {
   justify-content: center;
   align-items: center;
   gap: 50px 0;
-  padding: 50px 100px;
+  padding: 50px;
   background: #ff4713;
   color: #fff;
+  position: relative;
 }
 footer .f_link {
   display: flex;
@@ -742,6 +743,107 @@ footer .f_link a {
 footer .personal {
   font-size: 1.2em;
   font-weight: 600;
+}
+footer .address {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+footer .address p {
+  line-height: 2;
+  text-align: center;
+}
+footer .address .address1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0 20px;
+}
+footer .address .address1 p:nth-child(1) {
+  position: relative;
+}
+footer .address .address1 p:nth-child(1):after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -10px;
+  width: 1px;
+  height: 15px;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.5);
+}
+footer .address .wrap {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0 20px;
+}
+footer .address .wrap .address2,
+footer .address .wrap .address3 {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0 20px;
+}
+footer .address .wrap .address2 p,
+footer .address .wrap .address3 p {
+  position: relative;
+}
+footer .address .wrap .address2 p:nth-child(1):after,
+footer .address .wrap .address3 p:nth-child(1):after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -10px;
+  width: 1px;
+  height: 15px;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.5);
+}
+footer .address .wrap .address2 {
+  position: relative;
+}
+footer .address .wrap .address2:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -10px;
+  width: 1px;
+  height: 15px;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.5);
+}
+footer .go_top {
+  position: absolute;
+  top: 50px;
+  right: 100px;
+  width: 80px;
+  height: 100px;
+  cursor: pointer;
+}
+footer .go_top .img_wrap {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 5px;
+  border-radius: 50%;
+  border: 1px solid #fff;
+}
+footer .go_top .img_wrap img {
+  width: 45px;
+}
+footer .go_top span {
+  color: #fff;
+  font-size: 1.3em;
+  letter-spacing: -1px;
 }
 
 @media screen and (max-width: 1200px) {
@@ -800,6 +902,9 @@ footer .personal {
     width: 55px;
     height: 55px;
     margin: 20px auto 10px;
+  }
+  footer .address .address1 p:nth-child(1):after {
+    width: 0;
   }
 }
 @media screen and (max-width: 1024px) {
@@ -870,6 +975,31 @@ footer .personal {
   }
   .sec5 .rotate_wrap {
     display: none;
+  }
+  footer .address p {
+    font-size: 0.9em;
+  }
+  footer .address .wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  footer .address .wrap .address2,
+footer .address .wrap .address3 {
+    gap: 0 40px;
+  }
+  footer .address .wrap .address2 p:nth-child(1):after,
+footer .address .wrap .address3 p:nth-child(1):after {
+    right: -20px;
+  }
+  footer .address .wrap .address2:after {
+    width: 0;
+  }
+  footer .go_top {
+    position: absolute;
+    top: 50px;
+    right: 50px;
   }
 }
 @media screen and (max-width: 500px) {
@@ -985,5 +1115,21 @@ footer .personal {
     gap: 0 10px;
     width: 80%;
     padding: 30px 0 60px;
+  }
+  footer {
+    gap: 30px 0;
+  }
+  footer .f_link {
+    gap: 0 40px;
+  }
+  footer .address p {
+    font-size: 0.8em;
+  }
+  footer .copyright {
+    text-align: center;
+    font-size: 0.9em;
+  }
+  footer .go_top {
+    right: 5px;
   }
 }/*# sourceMappingURL=brand.css.map */
