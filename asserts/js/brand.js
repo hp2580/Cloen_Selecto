@@ -110,6 +110,26 @@ slide_wrap.addEventListener("mouseup", (e) => {
   trigger = false;
 });
 
+slide_wrap.addEventListener("touchstart", ({ changedTouches }) => {
+  trigger = true;
+  slide_wrap.style.transition = ``;
+  clearInterval(interval);
+  prevX = changedTouches[0].clientX;
+});
+
+slide_wrap.addEventListener("touchmove", ({ changedTouches }) => {
+  if (trigger == true) {
+    moveX = prevX - changedTouches[0].clientX;
+    slide_wrap.style.transform = `translateX(-${prevPoint + moveX}px)`;
+  }
+});
+
+slide_wrap.addEventListener("touchend", ({ changedTouches }) => {
+  nextX = changedTouches[0].clientX;
+  move_slide(nextX);
+  trigger = false;
+});
+
 slide_wrap.addEventListener("transitionend", () => {
   if (index > slide_wrap.childElementCount - 2) {
     index = 1;
@@ -138,10 +158,8 @@ function move_slide(x) {
     direction = prevX - x;
     if (direction > width * 0.3) {
       index++;
-      // if (index > slide_wrap.childElementCount - 2) index = 1;
     } else if (direction < -(width * 0.3)) {
       index--;
-      // if (index < 1) index = slide_wrap.childElementCount - 2;
     }
     prevPoint = width * index;
     slide_wrap.style.transition = `.2s ease`;
