@@ -1,7 +1,7 @@
 let menus = document.querySelectorAll(".h_menu a");
 let depth2 = document.querySelector(".depth2");
 let header = document.querySelector("header");
-let side_menus = document.querySelectorAll(".menu a");
+let side_menus = document.querySelectorAll(`.menu a:not(.found)`);
 let slide_wrap = document.querySelector(".slide_wrap");
 let text_wrap = document.querySelector(".text_slide_wrap");
 let prevY;
@@ -10,8 +10,15 @@ let prevX = 0;
 let cnt = 0;
 let width, direction, index, interval, interval2;
 let trigger = false;
+let cloneFirst = slide_wrap.firstElementChild.cloneNode(true);
+let cloneLast = slide_wrap.lastElementChild.cloneNode(true);
+slide_wrap.append(cloneFirst);
+slide_wrap.prepend(cloneLast);
 
 window.onload = () => {
+  index = 1;
+  width = document.querySelector(".slide_wrap li").clientWidth;
+  slide_wrap.style.transform = `translateX(-${index * width}px)`;
   setTimeout(() => {
     header.classList.add("show");
     prevY = window.scrollY;
@@ -24,13 +31,6 @@ window.onload = () => {
       autoPlay();
     }, 1000);
   });
-  let cloneFirst = slide_wrap.firstElementChild.cloneNode(true);
-  let cloneLast = slide_wrap.lastElementChild.cloneNode(true);
-  slide_wrap.append(cloneFirst);
-  slide_wrap.prepend(cloneLast);
-  index = 1;
-  width = document.querySelector(".slide_wrap li").clientWidth;
-  slide_wrap.style.transform = `translateX(-${index * width}px)`;
 };
 
 window.onscroll = () => {
@@ -42,7 +42,6 @@ window.onscroll = () => {
       header.classList.remove("show");
       depth2.classList.remove("show");
       document.querySelector(".h_found").classList.remove("convert");
-      document.querySelector(".found").classList.remove("convert");
     }
     let box_middle =
       document.querySelector(".box").offsetTop -
