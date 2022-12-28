@@ -391,6 +391,7 @@ header {
 
 .popup_bot {
   background: $brand-color;
+  border-bottom: 1px solid #fff;
   .container {
     padding: 15px 20px;
     .top {
@@ -484,10 +485,117 @@ header {
         cursor: pointer;
       }
       .go_top {
-        width: 30px;
-        height: 30px;
+        width: 50px;
+        height: 50px;
         border-radius: 50%;
         border: 1px solid #fff;
+        cursor: pointer;
+        img {
+          width: 100%;
+          padding: 5px;
+        }
+      }
+    }
+  }
+}
+
+footer {
+  @include flex($direction: column);
+  gap: 50px 0;
+  padding: 50px;
+  background: $brand-color;
+  color: #fff;
+  position: relative;
+  .f_link {
+    @include flex;
+    gap: 0 80px;
+    a {
+      display: block;
+      height: 100%;
+    }
+  }
+  .personal {
+    font-size: 1.2em;
+    font-weight: 600;
+  }
+  .address {
+    @include flex($direction: column);
+    p {
+      line-height: 2;
+      text-align: center;
+    }
+    .address1 {
+      @include flex;
+      flex-wrap: wrap;
+      gap: 0 20px;
+      p {
+        &:nth-child(1) {
+          position: relative;
+          &:after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            right: -10px;
+            width: 1px;
+            height: 15px;
+            transform: translateY(-50%);
+            background: rgba(#fff, 0.5);
+          }
+        }
+      }
+    }
+    .wrap {
+      @include flex;
+      gap: 0 20px;
+      .address2,
+      .address3 {
+        @include flex;
+        gap: 0 20px;
+        p {
+          position: relative;
+          &:nth-child(1):after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            right: -10px;
+            width: 1px;
+            height: 15px;
+            transform: translateY(-50%);
+            background: rgba(#fff, 0.5);
+          }
+        }
+      }
+      .address2 {
+        position: relative;
+        &:after {
+          content: "";
+          position: absolute;
+          top: 50%;
+          right: -10px;
+          width: 1px;
+          height: 15px;
+          transform: translateY(-50%);
+          background: rgba(#fff, 0.5);
+        }
+      }
+    }
+  }
+  .copyright {
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  footer {
+    .address {
+      .address1 {
+        p {
+          &:nth-child(1) {
+            &:after {
+              width: 0;
+            }
+          }
+        }
       }
     }
   }
@@ -667,6 +775,31 @@ header {
           top: -100px;
           right: 20px;
           background: $brand-color;
+        }
+      }
+    }
+  }
+
+  footer {
+    .address {
+      p {
+        font-size: 0.9em;
+      }
+      .wrap {
+        @include flex($direction: column);
+        .address2,
+        .address3 {
+          gap: 0 40px;
+          p {
+            &:nth-child(1):after {
+              right: -20px;
+            }
+          }
+        }
+        .address2 {
+          &:after {
+            width: 0;
+          }
         }
       }
     }
