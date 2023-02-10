@@ -650,7 +650,21 @@ footer {
 }
 
 @media screen and (max-width: 600px) {
+  header {
+    .container {
+      height: 55px;
+      .h_logo {
+        width: 80px;
+      }
+      .btn_side {
+        width: 30px;
+        height: 25px;
+      }
+    }
+  }
+
   .sec1 {
+    margin-top: 55px;
     .control_wrap {
       @include flex($justify: space-between);
       bottom: auto;
@@ -665,7 +679,8 @@ footer {
       }
     }
     .slide_wrap {
-      height: calc(100vh - 240px);
+      // height: calc(100vh - 240px);
+      height: 100vh;
       .slide {
         a {
           img {
@@ -705,6 +720,7 @@ footer {
       .introduce {
         width: 100%;
         > div {
+          min-height: auto;
           .desc {
             top: 70%;
             padding: 10px;
@@ -715,7 +731,7 @@ footer {
               overflow: hidden;
             }
             p {
-              font-size: 0.9em;
+              font-size: 0.8em;
             }
           }
           &:hover {
@@ -810,19 +826,6 @@ footer {
 }
 
 @media screen and (max-width: 500px) {
-  header {
-    .container {
-      height: 55px;
-      .h_logo {
-        width: 80px;
-      }
-      .btn_side {
-        width: 30px;
-        height: 25px;
-      }
-    }
-  }
-
   .sec1 {
     .control_wrap {
       display: none;

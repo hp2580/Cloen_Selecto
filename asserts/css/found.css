@@ -681,6 +681,19 @@ footer .copyright {
   }
 }
 @media screen and (max-width: 600px) {
+  header .container {
+    height: 55px;
+  }
+  header .container .h_logo {
+    width: 80px;
+  }
+  header .container .btn_side {
+    width: 30px;
+    height: 25px;
+  }
+  .sec1 {
+    margin-top: 55px;
+  }
   .sec1 .control_wrap {
     display: flex;
     flex-direction: row;
@@ -698,7 +711,7 @@ footer .copyright {
     display: none;
   }
   .sec1 .slide_wrap {
-    height: calc(100vh - 240px);
+    height: 100vh;
   }
   .sec1 .slide_wrap .slide a img:nth-child(1) {
     display: none;
@@ -727,6 +740,9 @@ footer .copyright {
   .sec2 .container .introduce {
     width: 100%;
   }
+  .sec2 .container .introduce > div {
+    min-height: auto;
+  }
   .sec2 .container .introduce > div .desc {
     top: 70%;
     padding: 10px;
@@ -738,7 +754,7 @@ footer .copyright {
     overflow: hidden;
   }
   .sec2 .container .introduce > div .desc p {
-    font-size: 0.9em;
+    font-size: 0.8em;
   }
   .sec2 .container .introduce > div:hover h2 {
     font-size: 0.9em;
@@ -814,16 +830,6 @@ footer .copyright {
   }
 }
 @media screen and (max-width: 500px) {
-  header .container {
-    height: 55px;
-  }
-  header .container .h_logo {
-    width: 80px;
-  }
-  header .container .btn_side {
-    width: 30px;
-    height: 25px;
-  }
   .sec1 .control_wrap {
     display: none;
   }
