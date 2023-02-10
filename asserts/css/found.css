@@ -113,7 +113,6 @@ body {
 }
 
 header {
-  position: -webkit-sticky;
   position: sticky;
   top: 0;
   left: 0;
@@ -439,9 +438,6 @@ header .depth2 .nav_wrap .wrap ul li a {
   background: transparent;
 }
 .popup_bot .container .top input::-moz-placeholder {
-  color: #fffe91;
-}
-.popup_bot .container .top input:-ms-input-placeholder {
   color: #fffe91;
 }
 .popup_bot .container .top input::placeholder {
@@ -803,11 +799,11 @@ footer .copyright {
     align-items: center;
   }
   footer .address .wrap .address2,
-footer .address .wrap .address3 {
+  footer .address .wrap .address3 {
     gap: 0 40px;
   }
   footer .address .wrap .address2 p:nth-child(1):after,
-footer .address .wrap .address3 p:nth-child(1):after {
+  footer .address .wrap .address3 p:nth-child(1):after {
     right: -20px;
   }
   footer .address .wrap .address2:after {
@@ -839,9 +835,6 @@ footer .address .wrap .address3 p:nth-child(1):after {
     height: auto;
   }
   .popup_bot .container .top input::-moz-placeholder {
-    color: #fffe91;
-  }
-  .popup_bot .container .top input:-ms-input-placeholder {
     color: #fffe91;
   }
   .popup_bot .container .top input::placeholder {

@@ -112,7 +112,6 @@ body {
 }
 
 header {
-  position: -webkit-sticky;
   position: sticky;
   top: 0;
   left: 0;
@@ -419,16 +418,10 @@ header .depth2 .nav_wrap .wrap ul li a {
 .sec2 .left .sec2_menu.active {
   transform: translateX(100%);
   z-index: 0;
-  -webkit-animation: slideIn 0.6s ease-in forwards;
-          animation: slideIn 0.6s ease-in forwards;
+  animation: slideIn 0.6s ease-in forwards;
 }
 .sec2 .left .sec2_menu.active img {
   transform: scale(1.1);
-}
-@-webkit-keyframes slideIn {
-  to {
-    transform: translateX(0);
-  }
 }
 @keyframes slideIn {
   to {
@@ -520,6 +513,9 @@ header .depth2 .nav_wrap .wrap ul li a {
   letter-spacing: -1px;
 }
 
+.sec3 {
+  overflow: hidden;
+}
 .sec3 .top {
   padding: 100px 0;
   text-align: center;
@@ -528,29 +524,26 @@ header .depth2 .nav_wrap .wrap ul li a {
   width: 100%;
 }
 .sec3 .text_slide_wrap {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
+  position: relative;
+  height: 80px;
   color: #ff4713;
-  font-size: 3em;
+  font-size: 3.3em;
   padding: 30px 0;
   border-bottom: 1px solid #ff4713;
 }
 .sec3 .text_slide_wrap .text_slide {
+  position: absolute;
+  top: 0;
+  left: 100%;
   overflow: hidden;
   white-space: nowrap;
-  min-width: -webkit-fit-content;
   min-width: -moz-fit-content;
   min-width: fit-content;
   margin-right: 10px;
-  -webkit-animation: slide_text 20s infinite linear;
-          animation: slide_text 20s infinite linear;
+  animation: slide_text 14s infinite linear;
 }
-@-webkit-keyframes slide_text {
-  to {
-    transform: translateX(-2000px);
-  }
+.sec3 .text_slide_wrap .text_slide:nth-child(2) {
+  animation-delay: 7s;
 }
 @keyframes slide_text {
   to {
@@ -694,13 +687,7 @@ header .depth2 .nav_wrap .wrap ul li a {
 }
 .sec5 .rotate_wrap .wrap img:nth-child(2) {
   width: 200px;
-  -webkit-animation: rotate 5s linear infinite;
-          animation: rotate 5s linear infinite;
-}
-@-webkit-keyframes rotate {
-  to {
-    transform: translate(-50%, -50%) rotate(360deg);
-  }
+  animation: rotate 5s linear infinite;
 }
 @keyframes rotate {
   to {
@@ -1016,11 +1003,11 @@ footer .go_top span {
     align-items: center;
   }
   footer .address .wrap .address2,
-footer .address .wrap .address3 {
+  footer .address .wrap .address3 {
     gap: 0 40px;
   }
   footer .address .wrap .address2 p:nth-child(1):after,
-footer .address .wrap .address3 p:nth-child(1):after {
+  footer .address .wrap .address3 p:nth-child(1):after {
     right: -20px;
   }
   footer .address .wrap .address2:after {

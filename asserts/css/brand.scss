@@ -484,6 +484,7 @@ header {
 }
 
 .sec3 {
+  overflow: hidden;
   .top {
     padding: 100px 0;
     text-align: center;
@@ -494,17 +495,24 @@ header {
     }
   }
   .text_slide_wrap {
-    @include flex($justify: flex-start);
+    position: relative;
+    height: 80px;
     color: $brand-color;
-    font-size: 3em;
+    font-size: 3.3em;
     padding: 30px 0;
     border-bottom: 1px solid $brand-color;
     .text_slide {
+      position: absolute;
+      top: 0;
+      left: 100%;
       overflow: hidden;
       white-space: nowrap;
       min-width: fit-content;
       margin-right: 10px;
-      animation: slide_text 20s infinite linear;
+      animation: slide_text 14s infinite linear;
+      &:nth-child(2) {
+        animation-delay: 7s;
+      }
     }
     @keyframes slide_text {
       to {
