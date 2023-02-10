@@ -134,19 +134,15 @@ slide_wrap.addEventListener("touchend", ({ changedTouches }) => {
 slide_wrap.addEventListener("transitionend", () => {
   if (index > slide_wrap.childElementCount - 2) {
     index = 1;
-    slide_wrap.style.transition = ``;
-    slide_wrap.style.transform = `translateX(-${width * index}px)`;
-    setTimeout(() => {
-      slide_wrap.style.transition = `.2s ease`;
-    });
   } else if (index < 1) {
     index = slide_wrap.childElementCount - 2;
-    slide_wrap.style.transition = ``;
-    slide_wrap.style.transform = `translateX(-${width * index}px)`;
-    setTimeout(() => {
-      slide_wrap.style.transition = `.2s ease`;
-    });
   }
+  prevPoint = index * width;
+  slide_wrap.style.transition = ``;
+  slide_wrap.style.transform = `translateX(-${prevPoint}px)`;
+  setTimeout(() => {
+    slide_wrap.style.transition = `.2s ease`;
+  });
   setTimeout(() => {
     trigger2 = false;
   }, 300);

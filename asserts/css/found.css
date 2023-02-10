@@ -113,9 +113,10 @@ body {
 }
 
 header {
-  position: sticky;
+  position: fixed;
   top: 0;
   left: 0;
+  width: 100%;
   background: #fff;
   transform: translateY(-100px);
   transition: 0.3s;
@@ -359,10 +360,12 @@ header .depth2 .nav_wrap .wrap ul li a {
 .sec2 .container .introduce > div {
   flex: 1;
   position: relative;
+  min-height: 285px;
   overflow: hidden;
 }
 .sec2 .container .introduce > div img {
   width: 100%;
+  height: 100%;
 }
 .sec2 .container .introduce > div .desc {
   position: absolute;

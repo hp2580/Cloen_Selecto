@@ -112,9 +112,10 @@ body {
 }
 
 header {
-  position: sticky;
+  position: fixed;
   top: 0;
   left: 0;
+  width: 100%;
   background: #fff;
   transform: translateY(-100px);
   transition: 0.3s;
@@ -330,9 +331,11 @@ header {
       > div {
         flex: 1;
         position: relative;
+        min-height: 285px;
         overflow: hidden;
         img {
           width: 100%;
+          height: 100%;
         }
         .desc {
           position: absolute;
