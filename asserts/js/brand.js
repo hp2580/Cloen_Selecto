@@ -1,15 +1,15 @@
-let menus = document.querySelectorAll(".h_menu a");
-let depth2 = document.querySelector(".depth2");
-let header = document.querySelector("header");
-let side_menus = document.querySelectorAll(`.menu a:not(.found)`);
-let slide_wrap = document.querySelector(".slide_wrap");
-let text_wrap = document.querySelector(".text_slide_wrap");
+const menus = document.querySelectorAll(".h_menu a"),
+  depth2 = document.querySelector(".depth2"),
+  header = document.querySelector("header"),
+  side_menus = document.querySelectorAll(`.menu a:not(.found)`),
+  slide_wrap = document.querySelector(".slide_wrap"),
+  text_wrap = document.querySelector(".text_slide_wrap");
 let prevY;
-let prevPoint = 0;
 let prevX = 0;
 let cnt = 0;
 let width, direction, index, interval, interval2;
-let trigger = false;
+let trigger = true;
+let mouseDown = false;
 let cloneFirst = slide_wrap.firstElementChild.cloneNode(true);
 let cloneLast = slide_wrap.lastElementChild.cloneNode(true);
 slide_wrap.append(cloneFirst);
@@ -17,8 +17,8 @@ slide_wrap.prepend(cloneLast);
 
 window.onload = () => {
   index = 1;
-  width = document.querySelector(".slide_wrap li").clientWidth;
-  slide_wrap.style.transform = `translateX(-${index * width}px)`;
+  width = 100 / slide_wrap.childElementCount;
+  slide_wrap.style.transform = `translateX(-${index * width}%)`;
   setTimeout(() => {
     header.classList.add("show");
     prevY = window.scrollY;
@@ -46,15 +46,16 @@ window.onscroll = () => {
     let box_middle =
       document.querySelector(".box").offsetTop -
       document.querySelector(".box").offsetHeight;
-    if (box_middle < window.scrollY)
+    if (box_middle < window.scrollY) {
       document.querySelector(".sec4_num").innerHTML = `284,438`;
+    }
   } else header.classList.add("show");
   prevY = currentY;
 };
 
 window.onresize = () => {
-  width = document.querySelector(".slide_wrap li").clientWidth;
-  slide_wrap.style.transform = `translateX(-${width * index}px)`;
+  width = 100 / slide_wrap.childElementCount;
+  slide_wrap.style.transform = `translateX(-${width * index}%)`;
 };
 
 document.querySelector(".btn_side").addEventListener("click", () => {
@@ -91,96 +92,59 @@ header.addEventListener("mouseleave", () => {
   document.querySelector(".h_found").classList.remove("convert");
 });
 
-slide_wrap.addEventListener("mousedown", (e) => {
-  trigger = true;
-  slide_wrap.style.transition = ``;
-  clearInterval(interval);
-  prevX = e.pageX;
-});
-
-slide_wrap.addEventListener("mousemove", (e) => {
-  if (trigger == true) {
-    moveX = prevX - e.pageX;
-    slide_wrap.style.transform = `translateX(-${prevPoint + moveX}px)`;
+slide_wrap.addEventListener("mousedown", ({ clientX }) => {
+  if (trigger) {
+    handleDown(clientX);
   }
 });
 
-slide_wrap.addEventListener("mouseup", (e) => {
-  nextX = e.pageX;
-  move_slide(nextX);
-  trigger = false;
-  isEnd = false;
+slide_wrap.addEventListener("mousemove", ({ clientX }) => {
+  if (trigger && mouseDown) {
+    handleMove(clientX);
+  }
+});
+
+slide_wrap.addEventListener("mouseup", ({ clientX }) => {
+  if (trigger) {
+    handleUp(clientX);
+  }
 });
 
 slide_wrap.addEventListener("touchstart", ({ changedTouches }) => {
-  trigger = true;
-  slide_wrap.style.transition = ``;
-  clearInterval(interval);
-  prevX = changedTouches[0].clientX;
+  if (trigger) {
+    handleDown(changedTouches[0].clientX);
+  }
 });
 
 slide_wrap.addEventListener("touchmove", ({ changedTouches }) => {
-  if (trigger == true) {
-    moveX = prevX - changedTouches[0].clientX;
-    slide_wrap.style.transform = `translateX(-${prevPoint + moveX}px)`;
+  if (trigger && mouseDown) {
+    handleMove(changedTouches[0].clientX);
   }
 });
 
 slide_wrap.addEventListener("touchend", ({ changedTouches }) => {
-  nextX = changedTouches[0].clientX;
-  move_slide(nextX);
-  trigger = false;
+  if (trigger) {
+    handleUp(changedTouches[0].clientX);
+  }
 });
 
 slide_wrap.addEventListener("transitionend", () => {
-  if (index > slide_wrap.childElementCount - 2) {
-    index = 1;
-  } else if (index < 1) {
-    index = slide_wrap.childElementCount - 2;
-  }
-  prevPoint = width * index;
-  slide_wrap.style.transition = ``;
-  slide_wrap.style.transform = `translateX(-${prevPoint}px)`;
-  setTimeout(() => {
-    slide_wrap.style.transition = `.2s ease`;
-  });
-});
-
-document.body.addEventListener("mouseout", (e) => {
-  move_slide(0);
-  trigger = false;
-});
-
-function move_slide(x) {
-  if (trigger == true) {
-    direction = prevX - x;
-    if (direction > width * 0.3) {
-      index++;
-    } else if (direction < -(width * 0.3)) {
-      index--;
+  let max = slide_wrap.childElementCount - 2;
+  if (index > max || index < 1) {
+    if (index > max) {
+      index = 1;
+    } else if (index < 1) {
+      index = max;
     }
-    prevPoint = width * index;
-    slide_wrap.style.transition = `.2s ease`;
-    slide_wrap.style.transform = `translateX(-${prevPoint}px)`;
+    slide_wrap.style.transition = "";
+    slide_wrap.style.transform = `translateX(-${width * index}%)`;
     setTimeout(() => {
-      cnt = 0;
-      interval = setInterval(() => {
-        autoPlay();
-      }, 1000);
+      slide_wrap.style.transition = `transform .3s ease`;
     });
   }
-}
-
-function autoPlay() {
-  cnt++;
-  if (cnt > 3) {
-    cnt = 0;
-    index++;
-  }
-  prevPoint = width * index;
-  slide_wrap.style.transition = `.2s ease`;
-  slide_wrap.style.transform = `translateX(-${prevPoint}px)`;
-}
+  trigger = true;
+  cnt = 0;
+});
 
 let buttons = document.querySelectorAll(".btn_wrap button");
 for (let button of buttons) {
@@ -195,6 +159,48 @@ for (let button of buttons) {
     document.querySelector(`.deco${index}`).classList.add("active");
     this.classList.add("active");
   });
+}
+
+function handleDown(x) {
+  cnt = 0;
+  mouseDown = true;
+  prevX = x;
+}
+
+function handleMove(x) {
+  let movePoint =
+    (slide_wrap.clientWidth / slide_wrap.childElementCount) * index;
+  moveX = prevX - x;
+  slide_wrap.style.transition = ``;
+  slide_wrap.style.transform = `translateX(-${movePoint + moveX}px)`;
+}
+
+function handleUp(x) {
+  let direction = prevX - x;
+  mouseDown = false;
+  if (direction > 100 || direction < -100) {
+    move_slide(direction);
+    slide_wrap.style.transition = `transform .3s ease`;
+    trigger = false;
+  }
+}
+
+function move_slide(direction) {
+  if (direction > 100) {
+    index++;
+  } else if (direction < -100) {
+    index--;
+  }
+  slide_wrap.style.transform = `translateX(-${width * index}%)`;
+}
+
+function autoPlay() {
+  cnt++;
+  if (cnt > 3) {
+    cnt = 0;
+    index++;
+    move_slide(0);
+  }
 }
 
 function clearActive(elements) {

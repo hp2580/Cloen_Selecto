@@ -282,7 +282,7 @@ header {
   }
   .slide_wrap {
     @include flex;
-    width: 400%;
+    width: 200%;
     height: calc(100vh - 200px);
     .slide {
       flex: 1;
