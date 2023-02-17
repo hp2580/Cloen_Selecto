@@ -588,6 +588,10 @@ header .depth2 .nav_wrap .wrap ul li a {
   margin-right: 20px;
   line-height: 1.3;
 }
+.sec4 .container .box p strong span.active {
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
 .sec4 .container .box span {
   opacity: 0.5;
   font-size: 1.2em;

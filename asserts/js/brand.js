@@ -3,7 +3,9 @@ const menus = document.querySelectorAll(".h_menu a"),
   header = document.querySelector("header"),
   side_menus = document.querySelectorAll(`.menu a:not(.found)`),
   slide_wrap = document.querySelector(".slide_wrap"),
-  text_wrap = document.querySelector(".text_slide_wrap");
+  text_wrap = document.querySelector(".text_slide_wrap"),
+  num = document.querySelector(".sec4_num");
+
 let prevY;
 let prevX = 0;
 let cnt = 0;
@@ -12,6 +14,7 @@ let trigger = true;
 let mouseDown = false;
 let cloneFirst = slide_wrap.firstElementChild.cloneNode(true);
 let cloneLast = slide_wrap.lastElementChild.cloneNode(true);
+let arrNum;
 slide_wrap.append(cloneFirst);
 slide_wrap.prepend(cloneLast);
 
@@ -19,6 +22,14 @@ window.onload = () => {
   index = 1;
   width = 100 / slide_wrap.childElementCount;
   slide_wrap.style.transform = `translateX(-${index * width}%)`;
+  arrNum = num.innerText.split("");
+  num.innerText = "";
+  arrNum.forEach((number) => {
+    let spanNum = document.createElement("span");
+    if (isFinite(number)) spanNum.innerText = "0";
+    else spanNum.innerText = number;
+    num.append(spanNum);
+  });
   setTimeout(() => {
     header.classList.add("show");
     prevY = window.scrollY;
@@ -47,7 +58,16 @@ window.onscroll = () => {
       document.querySelector(".box").offsetTop -
       document.querySelector(".box").offsetHeight;
     if (box_middle < window.scrollY) {
-      document.querySelector(".sec4_num").innerHTML = `284,438`;
+      document.querySelectorAll(".sec4_num span").forEach((span, idx) => {
+        if (isFinite(arrNum[idx])) {
+          setTimeout(() => {
+            span.classList.add("active");
+            span.innerText = arrNum[idx];
+          }, (6 - idx) * 100);
+        } else {
+          span.classList.add("active");
+        }
+      });
     }
   } else header.classList.add("show");
   prevY = currentY;
