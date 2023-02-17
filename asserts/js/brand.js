@@ -15,11 +15,11 @@ let mouseDown = false;
 let cloneFirst = slide_wrap.firstElementChild.cloneNode(true);
 let cloneLast = slide_wrap.lastElementChild.cloneNode(true);
 let arrNum;
-slide_wrap.append(cloneFirst);
-slide_wrap.prepend(cloneLast);
 
 window.onload = () => {
   index = 1;
+  slide_wrap.append(cloneFirst);
+  slide_wrap.prepend(cloneLast);
   width = 100 / slide_wrap.childElementCount;
   slide_wrap.style.transform = `translateX(-${index * width}%)`;
   arrNum = num.innerText.split("");
@@ -33,6 +33,7 @@ window.onload = () => {
   setTimeout(() => {
     header.classList.add("show");
     prevY = window.scrollY;
+    slide_wrap.style.transition = `transform .3s ease`;
     for (let slide of document.querySelectorAll(".slide_wrap a")) {
       slide.addEventListener("click", (e) => {
         e.preventDefault();
