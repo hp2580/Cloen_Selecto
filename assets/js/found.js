@@ -45,7 +45,7 @@ window.onscroll = () => {
     else {
       header.classList.remove("show");
       depth2.classList.remove("show");
-      document.querySelector(".h_found").classList.remove("convert");
+      document.querySelector(".h_brand").classList.remove("convert");
     }
   } else header.classList.add("show");
   prevY = currentY;
@@ -81,13 +81,13 @@ for (let side_menu of side_menus) {
 for (let menu of menus) {
   menu.addEventListener("mouseenter", () => {
     depth2.classList.add("show");
-    document.querySelector(".h_found").classList.add("convert");
+    document.querySelector(".h_brand").classList.add("convert");
   });
 }
 
 header.addEventListener("mouseleave", () => {
   depth2.classList.remove("show");
-  document.querySelector(".h_found").classList.remove("convert");
+  document.querySelector(".h_brand").classList.remove("convert");
 });
 
 slide_wrap.addEventListener("mousedown", ({ clientX }) => {

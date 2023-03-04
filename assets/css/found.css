@@ -6,6 +6,28 @@ body {
   word-break: keep-all;
 }
 
+.skip {
+  position: relative;
+  z-index: 999;
+}
+.skip a {
+  position: absolute;
+  top: -100px;
+  left: 0;
+  width: 200px;
+  line-height: 30px;
+  font-size: 1.2rem;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  background: rgba(0, 0, 0, 0.5);
+}
+.skip a:active, .skip a:focus {
+  top: 0;
+  color: #fff;
+  border: 1px solid #fff;
+}
+
 .cursor {
   position: absolute;
   pointer-events: none;
@@ -175,7 +197,7 @@ header .container .h_link {
   align-items: center;
   gap: 0 10px;
 }
-header .container .h_link .h_found {
+header .container .h_link .h_brand {
   color: #fff;
   background: #ff4713;
   letter-spacing: -1px;
@@ -184,7 +206,7 @@ header .container .h_link .h_found {
   border: 1px solid transparent;
   transition: 0.3s;
 }
-header .container .h_link .h_found.convert {
+header .container .h_link .h_brand.convert {
   background: #fff;
   color: #ff4713;
   border: 1px solid #ff4713;

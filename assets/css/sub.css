@@ -108,11 +108,12 @@ section img.arrow {
   }
 }
 @media screen and (max-width: 550px) {
+  .cursor {
+    display: none;
+  }
   section.found {
     background-size: cover;
   }
-}
-@media screen and (max-width: 550px) {
   section .desc {
     width: 280px;
     height: 280px;

@@ -9,6 +9,27 @@ body {
   word-break: keep-all;
 }
 
+.skip {
+  position: relative;
+  z-index: 999;
+  a {
+    position: absolute;
+    top: -100px;
+    left: 0;
+    width: 200px;
+    line-height: 30px;
+    text-align: center;
+    font-size: 1.2rem;
+    color: rgba(#fff, 0.5);
+    border: 1px solid rgba(#fff, 0.5);
+    background: rgba(#000, 0.5);
+    &:active,
+    &:focus {
+      top: 0;
+    }
+  }
+}
+
 .cursor {
   position: absolute;
   pointer-events: none;
@@ -497,10 +518,9 @@ header {
   }
   .text_slide_wrap {
     position: relative;
-    height: 80px;
+    height: 90px;
     color: $brand-color;
-    font-size: 3.3em;
-    padding: 30px 0;
+    font-size: 4em;
     border-bottom: 1px solid $brand-color;
     .text_slide {
       position: absolute;
@@ -508,16 +528,14 @@ header {
       left: 100%;
       overflow: hidden;
       white-space: nowrap;
-      min-width: fit-content;
-      margin-right: 10px;
-      animation: slide_text 14s infinite linear;
+      animation: slide_text 12s infinite linear;
       &:nth-child(2) {
-        animation-delay: 7s;
+        animation-delay: 6s;
       }
     }
     @keyframes slide_text {
       to {
-        transform: translateX(-2000px);
+        transform: translateX(-240%);
       }
     }
   }
@@ -550,7 +568,7 @@ header {
       }
       p {
         font-size: 2.5em;
-        strong {
+        .sec4_num {
           font-size: 4em;
           margin-right: 20px;
           line-height: 1.3;
@@ -917,7 +935,7 @@ footer {
         margin: 60px 0 10px;
         p {
           font-size: 1.75em;
-          strong {
+          .sec4_num {
             font-size: 2.5em;
             margin-right: 10px;
           }
@@ -1085,7 +1103,7 @@ footer {
         }
         p {
           font-size: 1.2em;
-          strong {
+          .sec4_num {
             font-size: 2em;
           }
         }

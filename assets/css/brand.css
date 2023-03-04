@@ -5,6 +5,26 @@ body {
   word-break: keep-all;
 }
 
+.skip {
+  position: relative;
+  z-index: 999;
+}
+.skip a {
+  position: absolute;
+  top: -100px;
+  left: 0;
+  width: 200px;
+  line-height: 30px;
+  text-align: center;
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  background: rgba(0, 0, 0, 0.5);
+}
+.skip a:active, .skip a:focus {
+  top: 0;
+}
+
 .cursor {
   position: absolute;
   pointer-events: none;
@@ -526,10 +546,9 @@ header .depth2 .nav_wrap .wrap ul li a {
 }
 .sec3 .text_slide_wrap {
   position: relative;
-  height: 80px;
+  height: 90px;
   color: #ff4713;
-  font-size: 3.3em;
-  padding: 30px 0;
+  font-size: 4em;
   border-bottom: 1px solid #ff4713;
 }
 .sec3 .text_slide_wrap .text_slide {
@@ -538,17 +557,14 @@ header .depth2 .nav_wrap .wrap ul li a {
   left: 100%;
   overflow: hidden;
   white-space: nowrap;
-  min-width: -moz-fit-content;
-  min-width: fit-content;
-  margin-right: 10px;
-  animation: slide_text 14s infinite linear;
+  animation: slide_text 12s infinite linear;
 }
 .sec3 .text_slide_wrap .text_slide:nth-child(2) {
-  animation-delay: 7s;
+  animation-delay: 6s;
 }
 @keyframes slide_text {
   to {
-    transform: translateX(-2000px);
+    transform: translateX(-240%);
   }
 }
 
@@ -583,12 +599,12 @@ header .depth2 .nav_wrap .wrap ul li a {
 .sec4 .container .box p {
   font-size: 2.5em;
 }
-.sec4 .container .box p strong {
+.sec4 .container .box p .sec4_num {
   font-size: 4em;
   margin-right: 20px;
   line-height: 1.3;
 }
-.sec4 .container .box p strong span.active {
+.sec4 .container .box p .sec4_num span.active {
   opacity: 1;
   transition: opacity 0.3s ease;
 }
@@ -955,7 +971,7 @@ footer .go_top span {
   .sec4 .container .box p {
     font-size: 1.75em;
   }
-  .sec4 .container .box p strong {
+  .sec4 .container .box p .sec4_num {
     font-size: 2.5em;
     margin-right: 10px;
   }
@@ -1090,7 +1106,7 @@ footer .go_top span {
   .sec4 .container .box p {
     font-size: 1.2em;
   }
-  .sec4 .container .box p strong {
+  .sec4 .container .box p .sec4_num {
     font-size: 2em;
   }
   .sec5 .title {
